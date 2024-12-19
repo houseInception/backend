@@ -18,7 +18,7 @@ public class GroupAddDto {
     @NotBlank
     private String groupName;
     private MultipartFile groupProfile;
-    private String groupDefinition;
+    private String groupDescription;
 
     @Size(max = 5)
     private List<String> tags;

@@ -38,10 +38,6 @@ public class Group extends BaseTime {
     @Enumerated(EnumType.STRING)
     private Status status = ALIVE;
 
-    public List<GroupUser> getGroupUserList() {
-        return List.copyOf(groupUserList);
-    }
-
     public static Group create(User user, String groupName, String groupProfile, String groupDescription, int userLimit, boolean is_open) {
         Group group = new Group();
         group.groupUuid = UUID.randomUUID().toString();
@@ -59,5 +55,9 @@ public class Group extends BaseTime {
     private void addOwner(User user){
         GroupUser groupUser = new GroupUser(user, this, true);
         this.groupUserList.add(groupUser);
+    }
+
+    public List<GroupUser> getGroupUserList() {
+        return List.copyOf(groupUserList);
     }
 }

@@ -1,8 +1,12 @@
 package houseInception.connet.contoller;
 
 import houseInception.connet.domain.EmojiType;
+<<<<<<< Updated upstream
 import houseInception.connet.dto.chatEmoji.EmojiDto;
 import houseInception.connet.dto.chatEmoji.ChatEmojiUserResDto;
+=======
+import houseInception.connet.dto.EmojiDto;
+>>>>>>> Stashed changes
 import houseInception.connet.response.BaseResponse;
 import houseInception.connet.response.BaseResultDto;
 import houseInception.connet.service.ChatEmojiService;
@@ -36,11 +40,20 @@ public class ChatEmojiController {
     }
 
     @GetMapping("/privateChats/{chatId}/emojis")
+<<<<<<< Updated upstream
     public BaseResponse<List<ChatEmojiUserResDto>> getEmojiInfo(@PathVariable Long chatId,
                                                                 @RequestParam EmojiType emojiType){
         Long userId = UserAuthorizationUtil.getLoginUserId();
         List<ChatEmojiUserResDto> result = chatEmojiService.getEmojiInfoInPrivateRoom(userId, chatId, emojiType);
 
         return new BaseResponse<>(result);
+=======
+    public BaseResponse<BaseResultDto> getEmojiDetailOfPrivate(@PathVariable Long chatId,
+                                                               @RequestParam EmojiType emojiType) {
+        Long userId = UserAuthorizationUtil.getLoginUserId();
+        Long resultId = chatEmojiService.getEmojiDetailOfPrivate(userId, chatId, emojiType);
+
+        return BaseResponse.getSimpleRes(resultId);
+>>>>>>> Stashed changes
     }
 }
